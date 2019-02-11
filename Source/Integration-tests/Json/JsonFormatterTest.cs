@@ -4,12 +4,26 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace HansKindberg.TextFormatting.IntegrationTests
+namespace HansKindberg.TextFormatting.IntegrationTests.Json
 {
 	[TestClass]
-	public class MyTest
+	public class JsonFormatterTest
 	{
 		#region Methods
+
+		[TestMethod]
+		public void JsonTest()
+		{
+			var json = "{\"2-Key\":\"Value\",\"3-Key\":\"Value\",\"1-Key\":\"Value\"}";
+
+			var jsonObject = new JsonParser().Parse(json);
+
+			this.SortJsonObject(jsonObject);
+
+			json = jsonObject.ToString(Formatting.None);
+
+			Assert.AreEqual("{\"1-Key\":\"Value\",\"2-Key\":\"Value\",\"3-Key\":\"Value\"}", json);
+		}
 
 		protected internal virtual void SortJsonObject(JObject jsonObject)
 		{
@@ -27,20 +41,6 @@ namespace HansKindberg.TextFormatting.IntegrationTests
 				if(property.Value is JObject value)
 					this.SortJsonObject(value);
 			}
-		}
-
-		[TestMethod]
-		public void Test()
-		{
-			var json = "{\"2-Key\":\"Value\",\"3-Key\":\"Value\",\"1-Key\":\"Value\"}";
-
-			var jsonObject = new JsonParser().Parse(json);
-
-			this.SortJsonObject(jsonObject);
-
-			json = jsonObject.ToString(Formatting.None);
-
-			Assert.AreEqual("{\"1-Key\":\"Value\",\"2-Key\":\"Value\",\"3-Key\":\"Value\"}", json);
 		}
 
 		#endregion

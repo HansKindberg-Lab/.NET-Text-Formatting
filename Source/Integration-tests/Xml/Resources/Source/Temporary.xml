@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<b>
+		<b path="/a/p/?a=a&amp;a"></b>
+		<d></d>
+		<c></c>
+		<a></a>
+	</b>
+	<a>
+		<b></b>
+		<d></d>
+		<c></c>
+		<a></a>
+	</a>
+</root>

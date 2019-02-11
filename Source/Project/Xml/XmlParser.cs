@@ -14,7 +14,7 @@ namespace HansKindberg.TextFormatting.Xml
 			var xmlDocument = new XmlDocument();
 			xmlDocument.LoadXml(value);
 
-			return xmlDocument.DocumentElement;
+			return xmlDocument;
 		}
 
 		#endregion
