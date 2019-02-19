@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using HansKindberg.TextFormatting.Json;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -41,6 +42,17 @@ namespace HansKindberg.TextFormatting.IntegrationTests.Json
 				if(property.Value is JObject value)
 					this.SortJsonObject(value);
 			}
+		}
+
+		[TestMethod]
+		public void Yeah()
+		{
+			//var json = "{\"2-Key\":\"Value\",\"3-Key\":\"Value\",\"1-Key\":\"Value\"}";
+			var json = "{\"3-Key\":{\"B\":{\"B\":\"Value\",\"A\":\"Value\",\"C\":\"Value\"}},\"1-Key\":\"Value\",\"2-Key\":\"Value\"}";
+
+			var jsonFormatter = Global.ServiceProvider.GetService<IJsonFormatter>();
+
+			var formattedJson = jsonFormatter.Format(new JsonFormat(), json);
 		}
 
 		#endregion

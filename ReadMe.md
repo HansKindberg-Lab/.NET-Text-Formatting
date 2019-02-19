@@ -6,6 +6,7 @@ Description
 
 ## 1 JSON
 
+- JSONPath: search for it, https://www.newtonsoft.com/json/help/html/QueryJsonSelectTokenJsonPath.htm
 - Sorting: https://stackoverflow.com/questions/14417235/c-sharp-sort-json-string-keys?lq=1
 
 ## 2 XML

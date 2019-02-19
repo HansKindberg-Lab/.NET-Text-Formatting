@@ -1,14 +1,14 @@
 ﻿using System;
-using System.Xml;
 using HansKindberg.TextFormatting.Comparing;
+using Newtonsoft.Json.Linq;
 
-namespace HansKindberg.TextFormatting.Xml.Comparing
+namespace HansKindberg.TextFormatting.Json.Comparing
 {
-	public class XmlAttributeComparer : IndexedComparer<XmlAttribute>, IXmlAttributeComparer
+	public class JsonPropertyComparer : IndexedComparer<JProperty>, IJsonPropertyComparer
 	{
 		#region Constructors
 
-		public XmlAttributeComparer(IXmlAttributeFormat format)
+		public JsonPropertyComparer(IJsonPropertyFormat format)
 		{
 			this.Format = format ?? throw new ArgumentNullException(nameof(format));
 		}
@@ -17,13 +17,13 @@ namespace HansKindberg.TextFormatting.Xml.Comparing
 
 		#region Properties
 
-		protected internal virtual IXmlAttributeFormat Format { get; }
+		protected internal virtual IJsonPropertyFormat Format { get; }
 
 		#endregion
 
 		#region Methods
 
-		public virtual int Compare(IIndexed<XmlAttribute> x, IIndexed<XmlAttribute> y)
+		public virtual int Compare(IIndexed<JProperty> x, IIndexed<JProperty> y)
 		{
 			if(this.TryNullIndexedCompare(x, y, out var compare))
 				return compare;

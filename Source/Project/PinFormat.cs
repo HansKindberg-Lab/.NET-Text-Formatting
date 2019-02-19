@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace HansKindberg.TextFormatting.Xml
+namespace HansKindberg.TextFormatting
 {
 	public class PinFormat : AlphabeticalSortFormat, IPinFormat
 	{
 		#region Properties
 
-		public virtual ICollection<string> Pinned { get; } = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+		public virtual ISet<string> Pinned { get; } = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
 		#endregion
 	}

@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 
-namespace HansKindberg.TextFormatting.Xml
+namespace HansKindberg.TextFormatting
 {
 	public interface IPinFormat : IAlphabeticalSortFormat
 	{
 		#region Properties
 
-		ICollection<string> Pinned { get; }
+		ISet<string> Pinned { get; }
 
 		#endregion
 	}

@@ -21,8 +21,7 @@ namespace HansKindberg.TextFormatting.IntegrationTests.Xml
 				{
 					SortAlphabetically = true
 				},
-				Indent = true,
-				Name = "Test",
+				Indent = true
 			};
 
 			var source = File.ReadAllText(Path.Combine(Global.ProjectDirectoryPath, @"Xml\Resources\Source", "Web.config"));
