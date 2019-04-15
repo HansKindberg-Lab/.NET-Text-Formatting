@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using HansKindberg.TextFormatting.Collections.Extensions;
@@ -59,8 +60,12 @@ namespace HansKindberg.TextFormatting.Json
 			}
 		}
 
+		[SuppressMessage("Design", "CA1062:Validate arguments of public methods")]
 		protected internal virtual void SortPropertiesRecursive(IJsonPropertyComparer comparer, JObject value)
 		{
+			if(value == null)
+				throw new ArgumentNullException(nameof(value));
+
 			var properties = value.Properties().ToList();
 
 			foreach(var property in properties)

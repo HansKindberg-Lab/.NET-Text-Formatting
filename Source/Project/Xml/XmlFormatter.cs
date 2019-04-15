@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Xml;
@@ -52,6 +53,7 @@ namespace HansKindberg.TextFormatting.Xml
 			return output.ToString();
 		}
 
+		[SuppressMessage("Design", "CA1062:Validate arguments of public methods")]
 		protected internal virtual void SortAttributesRecursive(IXmlAttributeComparer comparer, XmlNode xmlNode)
 		{
 			if(xmlNode == null)

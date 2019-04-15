@@ -33,7 +33,7 @@ namespace HansKindberg.TextFormatting.Json.Comparing
 			//x.Value.CreateNavigator().Matches()
 			//this.Format.Pinned
 
-			return string.Compare(x.Value.Name, y.Value.Name, StringComparison.OrdinalIgnoreCase);
+			return string.Compare(x?.Value?.Name, y?.Value?.Name, StringComparison.OrdinalIgnoreCase);
 
 			//return x.Index.CompareTo(y.Index);
 

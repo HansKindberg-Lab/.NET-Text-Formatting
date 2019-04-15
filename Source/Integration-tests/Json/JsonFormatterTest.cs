@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using HansKindberg.TextFormatting.Json;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -26,8 +28,12 @@ namespace HansKindberg.TextFormatting.IntegrationTests.Json
 			Assert.AreEqual("{\"1-Key\":\"Value\",\"2-Key\":\"Value\",\"3-Key\":\"Value\"}", json);
 		}
 
+		[SuppressMessage("Design", "CA1062:Validate arguments of public methods")]
 		protected internal virtual void SortJsonObject(JObject jsonObject)
 		{
+			if(jsonObject == null)
+				throw new ArgumentNullException(nameof(jsonObject));
+
 			var properties = jsonObject.Properties().ToList();
 
 			foreach(var property in properties)
