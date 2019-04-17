@@ -1,10 +1,13 @@
-﻿namespace HansKindberg.TextFormatting.Json.Comparing
+﻿using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
+
+namespace HansKindberg.TextFormatting.Json.Comparing
 {
 	public interface IJsonPropertyComparerFactory
 	{
 		#region Methods
 
-		IJsonPropertyComparer Create(IJsonPropertyFormat format);
+		IComparer<JProperty> Create(IJsonPropertyFormat format);
 
 		#endregion
 	}

@@ -29,8 +29,5 @@
 			<Link>CodeAnalysis\Solution-suppressions.cs</Link>
 		</Compile>
 	</ItemGroup>
-	<ItemGroup>
-		<Folder Include="Xml\Resources\Expected\" />
-	</ItemGroup>
 	<Import Project="Build\Build.targets" />
 </Project>

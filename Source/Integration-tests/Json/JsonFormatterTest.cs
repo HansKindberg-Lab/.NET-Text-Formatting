@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using System.IO;
 using System.Linq;
 using HansKindberg.TextFormatting.Json;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,7 +13,44 @@ namespace HansKindberg.TextFormatting.IntegrationTests.Json
 	[TestClass]
 	public class JsonFormatterTest
 	{
+		#region Fields
+
+		private static readonly string _resourcesDirectoryPath = Path.Combine(Global.ProjectDirectoryPath, @"Json\Resources\JsonFormatterTest");
+
+		#endregion
+
+		#region Properties
+
+		protected internal virtual string ResourcesDirectoryPath => _resourcesDirectoryPath;
+
+		#endregion
+
 		#region Methods
+
+		[TestMethod]
+		public void Format_Test_1()
+		{
+			var formatter = Global.ServiceProvider.GetRequiredService<IJsonFormatter>();
+
+			var propertyFormat = new JsonPropertyFormat
+			{
+				AlphabeticalSort = true
+			};
+			//propertyFormat.PinPaths.Add("@pinned");
+
+			var format = new JsonFormat
+			{
+				PropertyFormat = propertyFormat
+			};
+
+			var json = File.ReadAllText(Path.Combine(this.ResourcesDirectoryPath, "Format-Test-1", "Test.json"));
+
+			var formatted = formatter.Format(format, json);
+
+			var expected = File.ReadAllText(Path.Combine(this.ResourcesDirectoryPath, "Format-Test-1", "Test.Expected-After-Formatting.json"));
+
+			Assert.AreEqual(expected, formatted);
+		}
 
 		[TestMethod]
 		public void JsonTest()

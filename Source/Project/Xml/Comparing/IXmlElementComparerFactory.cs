@@ -3,11 +3,11 @@ using System.Xml;
 
 namespace HansKindberg.TextFormatting.Xml.Comparing
 {
-	public interface IXmlAttributeComparerFactory
+	public interface IXmlElementComparerFactory
 	{
 		#region Methods
 
-		IComparer<XmlAttribute> Create(IXmlAttributeFormat format);
+		IComparer<XmlElement> Create(IXmlElementFormat format);
 
 		#endregion
 	}

@@ -1,8 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
-using HansKindberg.TextFormatting.Collections.Extensions;
 using HansKindberg.TextFormatting.Json.Comparing;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -61,25 +61,24 @@ namespace HansKindberg.TextFormatting.Json
 		}
 
 		[SuppressMessage("Design", "CA1062:Validate arguments of public methods")]
-		protected internal virtual void SortPropertiesRecursive(IJsonPropertyComparer comparer, JObject value)
+		protected internal virtual void SortPropertiesRecursive(IComparer<JProperty> comparer, JObject value)
 		{
 			if(value == null)
 				throw new ArgumentNullException(nameof(value));
 
-			var properties = value.Properties().ToList();
-
-			foreach(var property in properties)
+			// ReSharper disable InvertIf
+			if(value.Properties() != null)
 			{
-				property.Remove();
-			}
+				foreach(var property in value.Properties().OrderBy(item => item, comparer))
+				{
+					property.Remove();
+					value.Add(property);
 
-			foreach(var item in properties.Indexed<JProperty>().OrderBy(item => item, comparer))
-			{
-				value.Add(item.Value);
-
-				if(item.Value.Value is JObject child)
-					this.SortPropertiesRecursive(comparer, child);
+					if(property.Value is JObject child)
+						this.SortPropertiesRecursive(comparer, child);
+				}
 			}
+			// ReSharper restore InvertIf
 		}
 
 		#endregion

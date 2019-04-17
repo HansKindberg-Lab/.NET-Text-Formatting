@@ -1,4 +1,4 @@
 ﻿namespace HansKindberg.TextFormatting.Xml
 {
-	public interface IXmlAttributeFormat : IPinFormat { }
+	public interface IXmlAttributeFormat : IXmlNodeFormat { }
 }

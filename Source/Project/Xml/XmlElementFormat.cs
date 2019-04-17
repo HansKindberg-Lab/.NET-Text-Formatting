@@ -1,4 +1,4 @@
 ﻿namespace HansKindberg.TextFormatting.Xml
 {
-	public class XmlElementFormat : PinFormat, IXmlElementFormat { }
+	public class XmlElementFormat : XmlNodeFormat, IXmlElementFormat { }
 }
