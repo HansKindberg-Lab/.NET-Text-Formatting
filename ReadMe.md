@@ -1,5 +1,26 @@
 # .NET-Text-Formatting
 
+
+
+
+
+GUI for it:
+WPF
+http://blog.danskingdom.com/adding-a-wpf-settings-page-to-the-tools-options-dialog-window-for-your-visual-studio-extension/
+
+
+https://github.com/Microsoft/VSSDK-Extensibility-Samples/tree/master/Options
+
+
+
+
+
+
+
+
+
+
+
 Description
 
 [![NuGet](https://img.shields.io/nuget/v/HansKindberg.TextFormatting.svg?label=NuGet)](https://www.nuget.org/packages/HansKindberg.TextFormatting)
